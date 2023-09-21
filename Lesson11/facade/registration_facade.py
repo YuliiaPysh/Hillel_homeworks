@@ -1,3 +1,5 @@
+import allure
+
 from facade.base_facade import BaseFacade
 
 
@@ -5,6 +7,7 @@ class RegistrationFacade(BaseFacade):
     def __init__(self, driver):
         super().__init__(driver)
 
+    @allure.step("Register user")
     def register_user(self, name, lastname, email, password, repeat_password):
         self._main_page.signin_button().click()
         self._registration_page.name_field().send_keys(name)
