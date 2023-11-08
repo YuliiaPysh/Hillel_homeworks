@@ -5,17 +5,13 @@ from selenium.common.exceptions import NoSuchElementException
 @allure.feature("Beautiful tests")
 @allure.issue(url="https://google.com", name="Link for very important bag")
 @allure.link(url="https://google.com", name="Link to TestRail")
-def test_registration(logger, registration_facade, session):
+def test_registration(logger, registration_user, registration_facade):
     """ This test should be fixed to use registration_user instead of john_user fixture"""
     logger.info("User register test")
     # Replace  registration_facade.registration_user to registration_facade.user_registration(registration_user)
-    registration_facade.registration_user("test",
-                                          'testlastname',
-                                          "sytischenko@gmail.com",
-                                          "N9Xb46SCbgd8wy!",
-                                          "N9Xb46SCbgd8wy!")
+    registration_facade.registration_user(registration_user)
     assert registration_facade.check_is_user_logged_in()
-
+    pass
 
 def test_failed_registration_test(logger, driver):
     driver.get("https://qauto2.forstudy.space/panel/settings")

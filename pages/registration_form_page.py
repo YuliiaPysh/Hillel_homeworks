@@ -34,4 +34,3 @@ if __name__ == "__main__":
     reg_form.name_field = By.ID, "signupUser"
     print(__name__)
     print(__file__)
-    print(Demo)

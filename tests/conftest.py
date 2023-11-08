@@ -1,10 +1,10 @@
 import logging
-
 import pytest
 import requests
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 
+from data.users import RegistrationTestsDataPath, UserCreator
 from pages.registration_facade import RegistrationFacade
 
 
@@ -19,6 +19,14 @@ def user_data():
         "remember": False
     }
     return user_to_login
+
+
+@pytest.fixture
+def registration_user():
+    users = UserCreator.registration_users(RegistrationTestsDataPath)
+    for user in users:
+        if user.first_name == 'John':
+            yield user
 
 
 @pytest.fixture
